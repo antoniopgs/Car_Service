@@ -126,20 +126,30 @@ Insert the amount of km: """)
 3 - Search for vehicles with less than {c} kilometers
 
 Insert command: """)
+                    found_kms = False
                     with open("Vehicles.txt", "r") as file:
                         lines = file.readlines()
                         for line in lines:
                             pre_kms = line.split(" | ")
                             searched_kms = pre_kms[5]
                             if d == "1" and int(searched_kms) == int(c):
+                                found_kms = True
                                 new_line = line.strip("\n")
                                 print(new_line)
                             elif d == "2" and int(searched_kms) > int(c):
+                                found_kms = True
                                 new_line = line.strip("\n")
                                 print(new_line)
                             elif d == "3" and int(searched_kms) < int(c):
+                                found_kms = True
                                 new_line = line.strip("\n")
                                 print(new_line)
+                        if d == "1" and found_kms == False:
+                            print(f"No vehicles with {c} kilometers were found.\n")
+                        elif d == "2" and found_kms == False:
+                            print(f"No vehicles with more than {c} kilometers were found.\n")
+                        elif d == "3" and found_kms == False:
+                            print(f"No vehicles with less than {c} kilometers were found.\n")
                 elif b == "7":
                     cycle_2 = False
                     pass

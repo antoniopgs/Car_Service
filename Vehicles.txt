@@ -4,3 +4,4 @@
 4 | 44DD44 | Lamborghini | Aventador | António | 100000 | 250 | 5000 | car | 4 | 3 | 0.4 | 30 | active | 2.5 | 2.5
 5 | 55EE55 | Ford | Transit | António | 100000 | 250 | 5000 | van | 6 | 4 | 0.7 | 25 | active | 2.5 | 2.5
 6 | 99ZZ99 | Lamborghini | Mustang | Jorge | 20000 | 333 | 44 | car | 4 | 3 | 0.4 | 30 | active | 2.5 | 2.5
+7 | 99ZZ99 | Dodge | Charger | João | 150000 | 100 | 20 | car | 4 | 3 | 0.4 | 30 | active | 2.5 | 2.5
