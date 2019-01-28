@@ -130,11 +130,35 @@ Insert command: """)
                     pass
                 elif b == "9":
                     cycle_2 = False
-                    c = input("""--- VEHICLE TYPE ---
+                    cycle_3 = True
+                    while cycle_3 == True:
+                        c = input("""--- VEHICLE TYPE ---
 1 - Car
 2 - Van
-
+    
 Insert command: """)
+                        if c == "1" or c == "2":
+                            cycle_3 = False
+                            found_type = False
+                            with open("Vehicles.txt", "r") as file:
+                                lines = file.readlines()
+                                for line in lines:
+                                    pre_type = line.split(" | ")
+                                    searched_type = pre_type[8]
+                                    if c == "1" and searched_type == "car":
+                                        found_type = True
+                                        new_line = line.strip("\n")
+                                        print(new_line)
+                                    elif c == "2" and searched_type == "van":
+                                        found_type = True
+                                        new_line = line.strip("\n")
+                                        print(new_line)
+                                if c == "1" and found_type == False:
+                                    print("No cars were found.\n")
+                                elif c == "2" and found_type == False:
+                                    print("No vans were found.\n")
+                        else:
+                            print("Invalid command.\n")
                 elif b == "10":
                     cycle_2 = False
                     c = input("""--- VEHICLE STATUS ---
