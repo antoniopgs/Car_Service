@@ -161,11 +161,35 @@ Insert command: """)
                             print("Invalid command.\n")
                 elif b == "10":
                     cycle_2 = False
-                    c = input("""--- VEHICLE STATUS ---
+                    cycle_3 = True
+                    while cycle_3 == True:
+                        c = input("""--- VEHICLE STATUS ---
 1 - Active
 2 - Inactive
 
 Insert command: """)
+                        if c == "1" or c == "2":
+                            cycle_3 = False
+                            found_status = False
+                            with open("Vehicles.txt", "r") as file:
+                                lines = file.readlines()
+                                for line in lines:
+                                    pre_status = line.split(" | ")
+                                    searched_status = pre_status[13]
+                                    if c == "1" and searched_status == "active":
+                                        found_status = True
+                                        new_line = line.strip("\n")
+                                        print(new_line)
+                                    elif c == "2" and searched_status == "inactive":
+                                        found_status = True
+                                        new_line = line.strip("\n")
+                                        print(new_line)
+                                if c == "1" and found_status == False:
+                                    print("No active vehicles were found.\n")
+                                elif c == "2" and found_status == False:
+                                    print("No inactive vehicles were found.\n")
+                        else:
+                            print("Invalid command.\n")
                 elif b == "11":
                     cycle_2 = False
                     pass
