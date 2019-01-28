@@ -117,11 +117,29 @@ Insert command: """)
                                 print(line_2)
                     if found_driver == False:
                         print("No matching Driver was found.\n")
-                    else:
-                        pass
                 elif b == "6":
                     cycle_2 = False
-                    pass
+                    c = input("""--- VEHICLE KILOMETERS ---
+Insert the amount of km: """)
+                    d = input(f"""1 - Search for vehicles with {c} kilometers
+2 - Search for vehicles with more than {c} kilometers
+3 - Search for vehicles with less than {c} kilometers
+
+Insert command: """)
+                    with open("Vehicles.txt", "r") as file:
+                        lines = file.readlines()
+                        for line in lines:
+                            pre_kms = line.split(" | ")
+                            searched_kms = pre_kms[5]
+                            if d == "1" and int(searched_kms) == int(c):
+                                new_line = line.strip("\n")
+                                print(new_line)
+                            elif d == "2" and int(searched_kms) > int(c):
+                                new_line = line.strip("\n")
+                                print(new_line)
+                            elif d == "3" and int(searched_kms) < int(c):
+                                new_line = line.strip("\n")
+                                print(new_line)
                 elif b == "7":
                     cycle_2 = False
                     pass
