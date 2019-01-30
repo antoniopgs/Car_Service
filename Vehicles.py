@@ -31,7 +31,6 @@ Insert command: """)
 8 - Profit
 9 - Type (car or van)
 10 - Status
-11 - Position
 
 Insert command: """)
                 if b == "1":
@@ -278,9 +277,6 @@ Insert command: """)
                                     print("No inactive vehicles were found.\n")
                         else:
                             print("Invalid command.\n")
-                elif b == "11":
-                    cycle_2 = False
-                    pass
                 else:
                     print("Invalid Command.\n")
                 
