@@ -152,7 +152,7 @@ Insert command: """)
                             print(f"No vehicles with less than {c} kilometers were found.\n")
                 elif b == "7":
                     cycle_2 = False
-                    c = input("""--- VEHICLE KILOMETERS ---
+                    c = input("""--- VEHICLE TRIPS ---
 Insert the amount of trips: """)
                     d = input(f"""1 - Search for vehicles with {c} trips
 2 - Search for vehicles with more than {c} trips
@@ -185,7 +185,37 @@ Insert command: """)
                             print(f"No vehicles with less than {c} trips were found.\n")
                 elif b == "8":
                     cycle_2 = False
-                    pass
+                    c = input("""--- VEHICLE PROFIT ---
+Insert the amount of profit: """)
+                    d = input(f"""1 - Search for vehicles with a profit of {c}
+2 - Search for vehicles with more than {c} profit
+3 - Search for vehicles with less than {c} profit
+
+Insert command: """)
+                    found_profit = False
+                    with open("Vehicles.txt", "r") as file:
+                        lines = file.readlines()
+                        for line in lines:
+                            pre_profit = line.split(" | ")
+                            searched_profit = pre_profit[7]
+                            if d == "1" and int(searched_profit) == int(c):
+                                found_profit = True
+                                new_line = line.strip("\n")
+                                print(new_line)
+                            elif d == "2" and int(searched_profit) > int(c):
+                                found_profit = True
+                                new_line = line.strip("\n")
+                                print(new_line)
+                            elif d == "3" and int(searched_profit) < int(c):
+                                found_profit = True
+                                new_line = line.strip("\n")
+                                print(new_line)
+                        if d == "1" and found_profit == False:
+                            print(f"No vehicles with a profit of {c} were found.\n")
+                        elif d == "2" and found_profit == False:
+                            print(f"No vehicles with more than {c} profit were found.\n")
+                        elif d == "3" and found_profit == False:
+                            print(f"No vehicles with less than {c} profit were found.\n")
                 elif b == "9":
                     cycle_2 = False
                     cycle_3 = True
