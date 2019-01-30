@@ -152,7 +152,37 @@ Insert command: """)
                             print(f"No vehicles with less than {c} kilometers were found.\n")
                 elif b == "7":
                     cycle_2 = False
-                    pass
+                    c = input("""--- VEHICLE KILOMETERS ---
+Insert the amount of trips: """)
+                    d = input(f"""1 - Search for vehicles with {c} trips
+2 - Search for vehicles with more than {c} trips
+3 - Search for vehicles with less than {c} trips
+
+Insert command: """)
+                    found_trips = False
+                    with open("Vehicles.txt", "r") as file:
+                        lines = file.readlines()
+                        for line in lines:
+                            pre_trips = line.split(" | ")
+                            searched_trips = pre_trips[6]
+                            if d == "1" and int(searched_trips) == int(c):
+                                found_trips = True
+                                new_line = line.strip("\n")
+                                print(new_line)
+                            elif d == "2" and int(searched_trips) > int(c):
+                                found_trips = True
+                                new_line = line.strip("\n")
+                                print(new_line)
+                            elif d == "3" and int(searched_trips) < int(c):
+                                found_trips = True
+                                new_line = line.strip("\n")
+                                print(new_line)
+                        if d == "1" and found_trips == False:
+                            print(f"No vehicles with {c} trips were found.\n")
+                        elif d == "2" and found_trips == False:
+                            print(f"No vehicles with more than {c} trips were found.\n")
+                        elif d == "3" and found_trips == False:
+                            print(f"No vehicles with less than {c} trips were found.\n")
                 elif b == "8":
                     cycle_2 = False
                     pass
