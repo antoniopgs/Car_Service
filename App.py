@@ -66,8 +66,7 @@ Insert command: """)
 
 Insert command: """)
             if client_input == "1":
-                client_x = input("Insert your x coordinate: ")
-                client_y = input("Insert your y coordinate: ")
+                request()
             elif client_input == "2":
                 client_cycle = False
             else:

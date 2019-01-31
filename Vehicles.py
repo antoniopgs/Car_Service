@@ -1,5 +1,6 @@
 import math
 
+
 def search_vehicles():
     cycle = True
     while cycle == True:
@@ -393,3 +394,16 @@ def request():
                             rounded_total_time_mins = round(total_time_mins)
                             vehicle_id = new_line[0]
                             print(f"Vehicle {vehicle_id} will take you to your destination in {rounded_total_time_mins} minutes.")
+                    confirm_request = input(f"\nInsert the ID of the vehicle you want to request (or 'c' to cancel): ")
+                    found_id = False
+                    if confirm_request == "c" or confirm_request == "C":
+                        pass
+                    else:
+                        for line in lines:
+                            pre_check_id = line.split(" | ")
+                            check_id = pre_check_id[0]
+                            if check_id == confirm_request:
+                                found_id = True
+                                print("VEHICLE SUCCESSFULLY REQUESTED")
+                        if found_id == False:
+                            print("No matching ID was found.")
