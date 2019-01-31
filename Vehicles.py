@@ -369,9 +369,22 @@ def request():
                 print("Invalid coordinates.\n")
             else:
                 valid_coordinates = True
-                pre_distance = math.hypot(destination_x - user_x, destination_y - user_y)
-                distance = round(pre_distance, 2)
-                print(f"You are {distance} km away from your destination.\n")
+                distance = math.hypot(destination_x - user_x, destination_y - user_y)
+                rounded_distance = round(distance, 2)
+                print(f"You are {rounded_distance} km away from your destination.\n")
                 print("--- AVAILABLE VEHICLES ---")
-                #search_vehicles()
-
+                with open("Vehicles.txt", "r") as file:
+                    lines = file.readlines()
+                    for line in lines:
+                        new_line = line.split(" | ")
+                        vehicle_x = new_line[14]
+                        vehicle_y = new_line[15]
+                        distance_to_user = math.hypot(user_x - float(vehicle_x), user_y - float(vehicle_y))
+                        vehicle_speed = int(new_line[12])
+                        time_to_user = distance_to_user / vehicle_speed
+                        time_user_to_destination = distance / vehicle_speed
+                        total_time = time_to_user + time_user_to_destination
+                        total_time_mins = total_time * 60
+                        rounded_total_time_mins = round(total_time_mins)
+                        vehicle_id = new_line[0]
+                        print(f"Vehicle {vehicle_id} will take you to your destination in {rounded_total_time_mins} minutes.")
