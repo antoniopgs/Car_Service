@@ -22,7 +22,8 @@ Insert command: """)
 3 - Search vehicle
 4 - Search clients
 5 - Request vehicle
-6 - Quit
+6 - Refresh
+7 - Quit
 
 Insert command: """)
                 if admin_input == "1":
@@ -36,6 +37,8 @@ Insert command: """)
                 elif admin_input == "5":
                     request()
                 elif admin_input == "6":
+                    refresh()
+                elif admin_input == "7":
                     admin_cycle = False
                 else:
                     print("Invalid command.\n")

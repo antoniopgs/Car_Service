@@ -1,4 +1,5 @@
 import math
+import random
 
 
 def search_vehicles():
@@ -361,12 +362,12 @@ def request():
     while valid_coordinates == False:
         user_x = float(input("Insert your x coordinate: "))
         user_y = float(input("Insert your y coordinate: "))
-        if user_x <= 0 or user_x > 5 or user_y <= 0 or user_y > 5:
+        if user_x < 0 or user_x > 5 or user_y < 0 or user_y > 5:
             print("Invalid coordinates.\n")
         else:
             destination_x = float(input("Insert your destination's x coordinate: "))
             destination_y = float(input("Insert your destination's y coordinate: "))
-            if destination_x <= 0 or destination_x > 5 or destination_y <= 0 or destination_y > 5:
+            if destination_x < 0 or destination_x > 5 or destination_y < 0 or destination_y > 5:
                 print("Invalid coordinates.\n")
             else:
                 valid_coordinates = True
@@ -407,3 +408,21 @@ def request():
                                 print("VEHICLE SUCCESSFULLY REQUESTED")
                         if found_id == False:
                             print("No matching ID was found.")
+
+
+def refresh():
+    new_positions = []
+    with open("Vehicles.txt", "r") as file:
+        lines = file.readlines()
+        for line in lines:
+            old_line = line.split(" | ")
+            pre_random_x = random.uniform(0, 5)
+            pre_random_y = random.uniform(0, 5)
+            random_x = str(round(pre_random_x, 1))
+            random_y = str(round(pre_random_y, 1))
+            new_line = line.replace(old_line[14], random_x)
+            new_line_2 = new_line.replace(old_line[15], random_y)
+            new_positions.append(new_line_2)
+    with open("Vehicles.txt", "w") as file:
+        file.writelines(new_positions)
+    print("VEHICLE POSITIONS SUCCESSFULLY REFRESHED.\n")
