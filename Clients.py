@@ -10,8 +10,10 @@ def read_clients():
                 username = client[0]
                 pre_password = client[1]
                 password = pre_password.strip("\n")
-                client_list.update({username : password})
-        return(client_list)
+                client_list.update({username: password})
+        return client_list
+
+
 clients = read_clients()
 
 
@@ -52,7 +54,7 @@ def create_account():
         new_username = check_originality()
         new_password = validate_password()
         file.write(f"{new_username} {new_password}\n")
-        print("\nACCOUNT SUCCESSFULLY CREATED\nHello %s!" % (new_username))
+        print(f"\nACCOUNT SUCCESSFULLY CREATED\nHello {new_username}!")
 
 
 def login():
@@ -64,7 +66,7 @@ def login():
         if input_user in clients:
             if clients[input_user] == input_pass:
                 login = True
-                print("\nHello %s!" % (input_user))
+                print(f"\nHello {input_user}!")
                 if input_user == "admin":
                     return "admin"
                 else:
@@ -77,6 +79,7 @@ def login():
             login_attempts_left -= 1
     print("You exceeded the number of allowed login attempts.")
     quit()
+
 
 def search_clients():
     for x in clients:

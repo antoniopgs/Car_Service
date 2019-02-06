@@ -3,7 +3,7 @@ from Vehicles import *
 
 print("Hello!\n")
 cycle = True
-while cycle == True:
+while cycle:
     user_input = input("""--- MENU ---
 1 - Login
 2 - Create Account
@@ -14,7 +14,7 @@ Insert command: """)
         cycle = False
         if login() == "admin":
             admin_cycle = True
-            while admin_cycle == True:
+            while admin_cycle:
                 admin_input = input("""
 --- MENU ---
 1 - Add vehicle
@@ -44,7 +44,7 @@ Insert command: """)
                     print("Invalid command.\n")
         else:
             client_cycle = True
-            while client_cycle == True:
+            while client_cycle:
                 client_input = input("""
 --- MENU ---
 1 - Request vehicle
@@ -61,7 +61,7 @@ Insert command: """)
         cycle = False
         create_account()
         client_cycle = True
-        while client_cycle == True:
+        while client_cycle:
             client_input = input("""
 --- MENU ---
 1 - Request vehicle
