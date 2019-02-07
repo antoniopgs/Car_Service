@@ -19,7 +19,7 @@ clients = read_clients()
 
 def check_originality():
     originality = False
-    while originality == False:
+    while not originality:
         a = input("Insert your new username: ")
         if len(a) == 0 or a == "admin":
             print("Invalid username.\n")
@@ -32,7 +32,7 @@ def check_originality():
 
 def validate_password():
     password_validity = False
-    while password_validity == False:
+    while not password_validity:
         b = input("""Passwords must contain at least:
 - 6 Characters
 - 1 Upper Case Letter

@@ -4,7 +4,7 @@ import random
 
 def search_vehicles():
     cycle = True
-    while cycle == True:
+    while cycle:
         a = input("""--- SEARCH OPTIONS ---
 1 - Search all vehicles
 2 - Search a specific vehicle
@@ -21,7 +21,7 @@ Insert command: """)
         elif a == "2":
             cycle = False
             cycle_2 = True
-            while cycle_2 == True:
+            while cycle_2:
                 b = input("""--- SEARCH BY ---
 1 - ID
 2 - License
@@ -48,7 +48,7 @@ Insert command: """)
                                 found_id = True
                                 line_2 = line.strip("\n")
                                 print(line_2)
-                    if found_id == False:
+                    if not found_id:
                         print("No matching ID was found.\n")
                     else:
                         pass
@@ -65,7 +65,7 @@ Insert command: """)
                                 found_license = True
                                 line_2 = line.strip("\n")
                                 print(line_2)
-                    if found_license == False:
+                    if not found_license:
                         print("No matching License was found.\n")
                     else:
                         pass
@@ -82,7 +82,7 @@ Insert command: """)
                                 found_manufacturer = True
                                 line_2 = line.strip("\n")
                                 print(line_2)
-                    if found_manufacturer == False:
+                    if not found_manufacturer:
                         print("No matching Manufacturer was found.\n")
                     else:
                         pass
@@ -99,7 +99,7 @@ Insert command: """)
                                 found_model = True
                                 line_2 = line.strip("\n")
                                 print(line_2)
-                    if found_model == False:
+                    if not found_model:
                         print("No matching Model was found.\n")
                     else:
                         pass
@@ -116,7 +116,7 @@ Insert command: """)
                                 found_driver = True
                                 line_2 = line.strip("\n")
                                 print(line_2)
-                    if found_driver == False:
+                    if not found_driver:
                         print("No matching Driver was found.\n")
                 elif b == "6":
                     cycle_2 = False
@@ -145,11 +145,11 @@ Insert command: """)
                                 found_kms = True
                                 new_line = line.strip("\n")
                                 print(new_line)
-                        if d == "1" and found_kms == False:
+                        if d == "1" and not found_kms:
                             print(f"No vehicles with {c} kilometers were found.\n")
-                        elif d == "2" and found_kms == False:
+                        elif d == "2" and not found_kms:
                             print(f"No vehicles with more than {c} kilometers were found.\n")
-                        elif d == "3" and found_kms == False:
+                        elif d == "3" and not found_kms:
                             print(f"No vehicles with less than {c} kilometers were found.\n")
                 elif b == "7":
                     cycle_2 = False
@@ -178,11 +178,11 @@ Insert command: """)
                                 found_trips = True
                                 new_line = line.strip("\n")
                                 print(new_line)
-                        if d == "1" and found_trips == False:
+                        if d == "1" and not found_trips:
                             print(f"No vehicles with {c} trips were found.\n")
-                        elif d == "2" and found_trips == False:
+                        elif d == "2" and not found_trips:
                             print(f"No vehicles with more than {c} trips were found.\n")
-                        elif d == "3" and found_trips == False:
+                        elif d == "3" and not found_trips:
                             print(f"No vehicles with less than {c} trips were found.\n")
                 elif b == "8":
                     cycle_2 = False
@@ -211,16 +211,16 @@ Insert command: """)
                                 found_profit = True
                                 new_line = line.strip("\n")
                                 print(new_line)
-                        if d == "1" and found_profit == False:
+                        if d == "1" and not found_profit:
                             print(f"No vehicles with a profit of {c} were found.\n")
-                        elif d == "2" and found_profit == False:
+                        elif d == "2" and not found_profit:
                             print(f"No vehicles with more than {c} profit were found.\n")
-                        elif d == "3" and found_profit == False:
+                        elif d == "3" and not found_profit:
                             print(f"No vehicles with less than {c} profit were found.\n")
                 elif b == "9":
                     cycle_2 = False
                     cycle_3 = True
-                    while cycle_3 == True:
+                    while cycle_3:
                         c = input("""--- VEHICLE TYPE ---
 1 - Car
 2 - Van
@@ -242,16 +242,16 @@ Insert command: """)
                                         found_type = True
                                         new_line = line.strip("\n")
                                         print(new_line)
-                                if c == "1" and found_type == False:
+                                if c == "1" and not found_type:
                                     print("No cars were found.\n")
-                                elif c == "2" and found_type == False:
+                                elif c == "2" and not found_type:
                                     print("No vans were found.\n")
                         else:
                             print("Invalid command.\n")
                 elif b == "10":
                     cycle_2 = False
                     cycle_3 = True
-                    while cycle_3 == True:
+                    while cycle_3:
                         c = input("""--- VEHICLE STATUS ---
 1 - Active
 2 - Inactive
@@ -273,9 +273,9 @@ Insert command: """)
                                         found_status = True
                                         new_line = line.strip("\n")
                                         print(new_line)
-                                if c == "1" and found_status == False:
+                                if c == "1" and not found_status:
                                     print("No active vehicles were found.\n")
-                                elif c == "2" and found_status == False:
+                                elif c == "2" and not found_status:
                                     print("No inactive vehicles were found.\n")
                         else:
                             print("Invalid command.\n")
@@ -285,10 +285,11 @@ Insert command: """)
         else:
             print("Invalid command.\n")
 
+
 def add():
     with open("Vehicles.txt", "r") as file:
         pre_id_counter = file.readlines()
-        if pre_id_counter == []:
+        if not pre_id_counter:
             id_counter = 1
         else:
             pre_id_counter_2 = pre_id_counter[-1]
@@ -303,7 +304,7 @@ def add():
     f = input("Insert the amount of trips performed by the vehicle: ")
     g = input("Insert the amount of profit (in euros) generated by the vehicle: ")
     valid_type = False
-    while valid_type == False:
+    while not valid_type:
         pre_h = input("""Is the vehicle a Car or a Van?
 1 - Car
 2 - Van
@@ -331,7 +332,7 @@ Insert number: """)
     with open("Vehicles.txt", "a+") as file:
         file.write(f"{id_counter} | {a} | {b} | {c} | {d} | {e} | {f} | {g} | {h} | {i} | {j} | {k} | {l} | {m} | {x} | {y}\n")
     id_counter += 1
-    print("VEHICLE SUCCESFULLY ADDED.")
+    print("VEHICLE SUCCESSFULLY ADDED.")
 
 
 def change_status():
@@ -359,7 +360,7 @@ def change_status():
 
 def request():
     valid_coordinates = False
-    while valid_coordinates == False:
+    while not valid_coordinates:
         user_x = float(input("Insert your x coordinate: "))
         user_y = float(input("Insert your y coordinate: "))
         if user_x < 0 or user_x > 5 or user_y < 0 or user_y > 5:
@@ -391,10 +392,10 @@ def request():
                             time_to_user = distance_to_user / vehicle_speed
                             time_user_to_destination = distance / vehicle_speed
                             total_time = time_to_user + time_user_to_destination
-                            total_time_mins = total_time * 60
-                            rounded_total_time_mins = round(total_time_mins)
+                            total_time_minutes = total_time * 60
+                            rounded_total_time_minutes = round(total_time_minutes)
                             vehicle_id = new_line[0]
-                            print(f"Vehicle {vehicle_id} will take you to your destination in {rounded_total_time_mins} minutes.")
+                            print(f"Vehicle {vehicle_id} will take you to your destination in {rounded_total_time_minutes} minutes.")
                     confirm_request = input(f"\nInsert the ID of the vehicle you want to request (or 'c' to cancel): ")
                     found_id = False
                     if confirm_request == "c" or confirm_request == "C":
@@ -406,7 +407,7 @@ def request():
                             if check_id == confirm_request:
                                 found_id = True
                                 print("VEHICLE SUCCESSFULLY REQUESTED")
-                        if found_id == False:
+                        if not found_id:
                             print("No matching ID was found.")
 
 
