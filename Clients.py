@@ -3,13 +3,11 @@ def read_clients():
     with open("Clients.txt", "r") as file:
         pre_client_list = file.readlines()
         for line in pre_client_list:
-            if line == "":
-                pass
+            if not line:
+                continue
             else:
-                client = line.split(" ")
-                username = client[0]
-                pre_password = client[1]
-                password = pre_password.strip("\n")
+                username, password = line.split(" ")
+                password = password.strip("\n")
                 client_list.update({username: password})
         return client_list
 
